@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+  <!-- Written by Benjamin Weber: benjamin.weber@rogers.com -->
+  <head>
+	<!-- Using angular 1.3.15 (Stable release at the time) --> 
+    <script src="deps/angular.min.js"></script>
+	<!-- Using ui-bootstrap 0.12.1 (Stable release at the time) --> 
+    <script src="deps/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="mitelTask.js"></script>
+	<!-- Using bootstrap css 3.3.4 -->
+	<link rel="stylesheet" href="mitelTask.css">
+    <link href="deps/bootstrap.min.css" rel="stylesheet">
+  </head>
+<body ng-app="MitelTask">
+
+	<!-- I tried looking for the logo to make this look more professional,
+	however I could only find the font in blue, which doesn't show up on the header
+	-->
+	<h1 class="top">MITEL | Oria</h1>
+	<div class="contain" ng-init="num=4">
+	
+		<div class="lhs" >
+			<!-- I had difficulty using the tabset boostrap UI's ng-click.
+			 I got it to render correctly, however onclick was calling a select function 
+			 instead of being overridden with just the simple assignment im trying to do.
+			 -->
+			<div class="tab" ng-click="num=1">COMPANY</div>
+			<div class="tab" ng-click="num=2">CALL FLOWS</div>
+			<div class="tab" ng-click="num=3">GROUPS</div>
+			<div class="tab" ng-click="num=4">USERS</div>
+			<div class="tab" ng-click="num=5">DEVICES</div>
+		</div>
+
+		<!-- 
+		Each of these accordions will re-use the same directive to make the form data that they contain.
+		The accordions are made using the default bootstrap CSS.
+		-->
+		<div class="rhs" ng-controller='mainController'> 
+			<div ng-repeat="tab in tabs" ng-controller="tab.cont" ng-show="num == {{tab.num}}">
+						  <accordion close-others="true">
+							<accordion-group is-open='group.isOpen' ng-repeat="group in groups">
+							<accordion-heading>
+									{{group.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': group.isOpen, 'glyphicon-chevron-right': !group.isOpen}"></i>
+							</accordion-heading>
+							<!-- Use the directive to generate the "form" content -->
+							<div acc-dir></div>
+							</accordion-group>
+						  </accordion>
+			</div>
+		</div>
+	</div>
+	<h1 class="bot"> Made By: Benjamin Weber</h1>
+</body>
+</html>

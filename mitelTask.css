@@ -1,0 +1,58 @@
+html, body {
+    width:100%;
+	height:100%;
+    position:relative;
+}
+
+table{
+text-align: left
+}
+
+div.tab{
+height:10%;
+color:black;
+}
+
+div.tab:hover{
+color:white;
+background-color:#159fda;
+}
+
+h1.top{
+	margin:0;
+	padding:0;
+	height:5%;
+	width:100%;
+	color:white;
+	background:transparent;
+	background-color:#003158;
+}
+
+h1.bot{
+	margin:0;
+	padding:0;
+	height:5%;
+	width:100%;
+	color:white;
+	background-color:#003158;
+}
+
+div.contain{
+	height:90%;
+	width:100%;
+	margin:0;
+	padding:0;
+	background-color:#ebebeb;
+}
+
+div.lhs{
+	width:10%;
+	height:100%;
+	float: left;
+}
+
+div.rhs{
+	width:90%;
+	height:100%;
+	float: left;
+}
